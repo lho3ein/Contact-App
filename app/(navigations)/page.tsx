@@ -6,11 +6,11 @@ export default function Home() {
     <>
       <div className={`dark container mx-auto flex justify-center mt-24 px-2`}>
         <Link
-          href="/todo"
+          href="/contact"
           type="submit"
           className="bg-blue-700 text-white rounded-md bg-opacity-85 py-2 px-5"
         >
-          Go Todo App
+          Go Contact App
         </Link>
       </div>
     </>

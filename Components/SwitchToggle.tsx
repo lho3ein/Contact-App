@@ -14,7 +14,8 @@ const SwitchToggle = () => {
           <input
             className="theme-switch__checkbox"
             type="checkbox"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            checked={theme === "dark" ? true : false}
+            onChange={() => setTheme(theme === "dark" ? "light" : "dark")}
           />
           <div className="theme-switch__container">
             <div className="theme-switch__clouds" />
