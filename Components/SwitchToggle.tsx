@@ -1,10 +1,8 @@
-import React, { Dispatch, SetStateAction } from "react";
+"use client";
+import { useTheme } from "next-themes";
 import styled from "styled-components";
-type SwitchToggleProp = {
-  isDark: boolean;
-  setIsDark: Dispatch<SetStateAction<boolean>>;
-};
-const SwitchToggle = ({ isDark, setIsDark }: SwitchToggleProp) => {
+const SwitchToggle = () => {
+  const { theme, setTheme } = useTheme();
   return (
     <StyledWrapper>
       <div className="-ml-4">
@@ -12,7 +10,7 @@ const SwitchToggle = ({ isDark, setIsDark }: SwitchToggleProp) => {
           <input
             className="theme-switch__checkbox"
             type="checkbox"
-            onClick={() => setIsDark(!isDark)}
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           />
           <div className="theme-switch__container">
             <div className="theme-switch__clouds" />
