@@ -9,15 +9,13 @@ export default function TableTodo() {
             ID
           </th>
           <th scope="col" className="lg:px-6 px-4 py-3">
-            Title
+            Full Name
           </th>
-          <th scope="col" className="lg:px-6 pr-2 py-3 text-center">
-            Description
+          <th scope="col" className="lg:px-2 pr-2 py-3 text-center">
+            Phone Number
           </th>
-          <th scope="col" className="lg:px-6 px-4 py-3">
-            Status
-          </th>
-          <th scope="col" className="lg:px-6 px-4 py-3 text-center">
+
+          <th scope="col" className="lg:px-2 md:w-28 px-4 py-3 text-center">
             Action
           </th>
         </tr>

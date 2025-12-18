@@ -3,9 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 import React, { createContext, useContext, useEffect } from "react";
 export type postt = {
   id: number;
-  title: string;
-  body: string;
-  status: boolean;
+  firstname: string;
+  lastname: string;
+  phonenumber: string;
 };
 type cntxt = {
   Todos: postt[] | undefined;
@@ -28,7 +28,7 @@ export function TodoContextWrapper({
     queryKey: ["posts"],
     queryFn: async () => {
       const res = await fetch(
-        "https://6624413d04457d4aaf9bf32a.mockapi.io/todos"
+        "https://6624413d04457d4aaf9bf32a.mockapi.io/Contact"
       );
       const data = await res.json();
       if (res.ok) return data as postt[];

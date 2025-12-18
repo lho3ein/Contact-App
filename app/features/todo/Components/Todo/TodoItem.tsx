@@ -2,8 +2,7 @@
 
 import { useTodoContext } from "@/Components/Context/TodoContext";
 import DeleteBtn from "./DeleteBtn";
-import DoneButton from "./Donebutton";
-import TdStatus from "./Tdstatus";
+import EditButton from "./Editbutton";
 
 export default function TodoItem() {
   const { Todos, isLoading } = useTodoContext();
@@ -26,14 +25,16 @@ export default function TodoItem() {
             >
               {item.id}
             </th>
-            <td className="md:px-6 px-4 py-3 md:py-4">{item.title}</td>
-            <td className="md:px-6 pr-2 py-3 md:py-4 text-center">
-              {item.body}
+            <td className="md:px-6 px-4 py-3 md:py-4">
+              {item.firstname + " " + item.lastname}
             </td>
-            <TdStatus Todo={item} />
-            <td className="md:px-6 px-4 py-3 md:py-4 text-sm flex md:flex-row flex-col gap-1 text-white">
-              <DeleteBtn Todo={item} />
-              <DoneButton Todo={item} />
+            <td className="md:px-6 pr-2 py-3 md:py-4 text-center">
+              {item.phonenumber}
+            </td>
+
+            <td className="md:px-6 px-4 py-3 md:py-4 text-sm flex flex-row gap-1 text-white">
+              <DeleteBtn item={item} />
+              <EditButton item={item} />
             </td>
           </tr>
         ))

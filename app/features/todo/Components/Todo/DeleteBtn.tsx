@@ -1,13 +1,13 @@
 "use client";
+import { postt } from "@/Components/Context/TodoContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { postt } from "../Context/TodoContext";
 
-export default function DeleteBtn({ Todo }: { Todo: postt }) {
+export default function DeleteBtn({ item }: { item: postt }) {
   const queryClient = useQueryClient();
 
   const deletData = async () => {
     await fetch(
-      `https://6624413d04457d4aaf9bf32a.mockapi.io/todos/${Todo.id}`,
+      `https://6624413d04457d4aaf9bf32a.mockapi.io/Contact/${item.id}`,
       {
         method: "DELETE",
         headers: {
@@ -21,18 +21,16 @@ export default function DeleteBtn({ Todo }: { Todo: postt }) {
   const { mutateAsync } = useMutation({
     mutationFn: deletData,
     // Optimstic ui
-    onMutate: async (id) => {
+    onMutate: async (id: number) => {
       // 1. همه کوئری‌های مربوط به todos رو pause می‌کنیم
       await queryClient.cancelQueries({ queryKey: ["posts"] });
 
       // 2. دیتا فعلی رو نگه می‌داریم برای احتمال نمایش دادن در ارور
-      const previousTodos = queryClient.getQueryData({
-        queryKey: ["posts"],
-      });
+      const previousTodos = queryClient.getQueryData(["posts"]);
 
       // 3. لیست رو بلافاصله و به‌صورت خوش‌بینانه آپدیت می‌کنیم
-      queryClient.setQueryData({ queryKey: ["posts"] }, (old = []) =>
-        old.filter((todo) => todo.id !== id)
+      queryClient.setQueryData<postt[]>(["posts"], (old = []) =>
+        old.filter((item) => item.id !== id)
       );
 
       // 4. این مقدار رو برای استفاده در ارور برمی‌گردونیم
@@ -40,7 +38,7 @@ export default function DeleteBtn({ Todo }: { Todo: postt }) {
     },
     // اگر خطا خورد، لیست قبلی رو برمی‌گردونیم
     onError: (err, id, context) => {
-      queryClient.setQueryData({ queryKey: ["posts"] }, context?.previousTodos);
+      queryClient.setQueryData(["posts"], context?.previousTodos);
     },
 
     onSettled: () => queryClient.invalidateQueries({ queryKey: ["posts"] }),
@@ -48,11 +46,22 @@ export default function DeleteBtn({ Todo }: { Todo: postt }) {
 
   return (
     <button
-      type="button"
-      className="bg-red-500 hover:bg-red-700 transition-colors duration-500 px-2 py-1 rounded-md"
-      onClick={async () => await mutateAsync()}
+      className="md:w-7 md:h-6 w-5 h-5 text-red-700 hover:text-red-800"
+      onClick={async () => await mutateAsync(item.id)}
     >
-      delete
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
     </button>
   );
 }
