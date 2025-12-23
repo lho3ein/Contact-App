@@ -4,6 +4,7 @@ export type newpostt = {
   lastname: string;
   phonenumber: string;
 };
+import { Button } from "@/Components/ui/button";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FormEvent, useState } from "react";
 
@@ -57,7 +58,7 @@ export default function FormAddTodo() {
           setStatusWarning(false), setFirstname(e.target.value)
         )}
         placeholder="First Name :"
-        className="border-2 w-full px-3 py-2 rounded-md dark:bg-gray-800"
+        className="border-2 w-full px-3 py-2 rounded-md dark:bg-gray-800 dark:border-gray-300"
       />
       <input
         type="text"
@@ -65,7 +66,7 @@ export default function FormAddTodo() {
         value={lastname}
         onChange={(e) => (setStatusWarning(false), setLastname(e.target.value))}
         placeholder="Last Name :"
-        className="border-2 w-full px-3 py-2 rounded-md dark:bg-gray-800"
+        className="border-2 w-full px-3 py-2 rounded-md dark:bg-gray-800 dark:border-gray-300"
       />
       <input
         type="tel"
@@ -75,7 +76,7 @@ export default function FormAddTodo() {
         onChange={(e) => (
           setStatusWarning(false), setPhoneNumber(e.target.value)
         )}
-        className="border-2 w-full px-3 py-2 rounded-md resize-none dark:bg-gray-800"
+        className="border-2 w-full px-3 py-2 rounded-md resize-none dark:bg-gray-800 dark:border-gray-300"
       ></input>
       <p
         className={`${
@@ -84,13 +85,14 @@ export default function FormAddTodo() {
       >
         Title and Body should not be empty
       </p>
-      <button
+      <Button
         type="submit"
+        size={"lg"}
         disabled={statusWarning}
-        className={`disabled:opacity-40 bg-indigo-600 hover:bg-indigo-700 text-white self-center rounded-md bg-opacity-85 py-2 px-5 dark:bg-indigo-800 dark:hover:bg-indigo-900`}
+        className="disabled:opacity-40 !bg-indigo-600 hover:!bg-indigo-800 text-white self-center rounded-md bg-opacity-85 py-2 px-5 mt-2 dark:bg-indigo-800 dark:hover:bg-indigo-700"
       >
         Add Contact
-      </button>
+      </Button>
     </form>
   );
 }

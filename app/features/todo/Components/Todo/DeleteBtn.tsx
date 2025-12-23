@@ -1,6 +1,7 @@
 "use client";
 import { postt } from "@/Components/Context/TodoContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { X } from "lucide-react";
 
 export default function DeleteBtn({ item }: { item: postt }) {
   const queryClient = useQueryClient();
@@ -46,22 +47,10 @@ export default function DeleteBtn({ item }: { item: postt }) {
 
   return (
     <button
-      className="md:w-7 md:h-6 w-5 h-5 text-red-700 hover:text-red-800"
+      className="md:w-6 md:h-6 w-5 h-5 text-red-700 hover:text-red-800"
       onClick={async () => await mutateAsync(item.id)}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M6 18L18 6M6 6l12 12"
-        />
-      </svg>
+      <X />
     </button>
   );
 }

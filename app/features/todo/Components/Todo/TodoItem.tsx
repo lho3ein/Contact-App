@@ -32,7 +32,7 @@ export default function TodoItem() {
               {item.phonenumber}
             </td>
 
-            <td className="md:px-6 px-4 py-3 md:py-4 text-sm flex flex-row gap-1 text-white">
+            <td className="md:px-6 px-4 py-3 md:py-4 text-sm flex flex-row gap-1 items-center justify-center text-white">
               <DeleteBtn item={item} />
               <EditButton item={item} />
             </td>
