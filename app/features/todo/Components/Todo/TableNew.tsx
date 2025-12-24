@@ -37,19 +37,6 @@ import DeleteBtn from "./DeleteBtn";
 import EditButton from "./Editbutton";
 import { postt } from "@/Components/Context/TodoContext";
 
-// const data: Payment[] = [
-//   {
-//     id: 1,
-//     fullname: "karen Khalili",
-//     phonenumber: "09364856554",
-//   },
-// ];
-
-// export type Payment = {
-//   id: string | number;
-//   fullname: string;
-//   phonenumber: string | number;
-// };
 export const columns: ColumnDef<postt>[] = [
   {
     accessorKey: "id",
