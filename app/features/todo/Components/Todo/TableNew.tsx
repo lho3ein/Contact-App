@@ -113,14 +113,14 @@ export function DataTableDemo({ data }: prpTB) {
           onChange={(event) =>
             table.getColumn("fullname")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="max-w-sm dark:border-gray-400"
         />
       </div>
-      <div className="overflow-hidden rounded-md border">
+      <div className="overflow-hidden rounded-md border dark:border-gray-400">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow key={headerGroup.id} className="dark:border-gray-400">
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
@@ -140,6 +140,7 @@ export function DataTableDemo({ data }: prpTB) {
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
+                  className="dark:border-gray-400"
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                 >
@@ -154,7 +155,7 @@ export function DataTableDemo({ data }: prpTB) {
                 </TableRow>
               ))
             ) : (
-              <TableRow>
+              <TableRow className="dark:border-gray-400">
                 <TableCell
                   colSpan={columns.length}
                   className="h-24 text-center"
@@ -169,7 +170,7 @@ export function DataTableDemo({ data }: prpTB) {
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="text-muted-foreground flex-1 text-sm">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
+          {table.getFilteredRowModel().rows.length} row(s) available.
         </div>
         <div className="space-x-2">
           <Button
