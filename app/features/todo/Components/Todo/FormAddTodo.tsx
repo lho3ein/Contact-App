@@ -1,7 +1,6 @@
 "use client";
 export type newpostt = {
-  firstname: string;
-  lastname: string;
+  fullname: string;
   phonenumber: string;
 };
 import { Button } from "@/Components/ui/button";
@@ -11,14 +10,12 @@ import { FormEvent, useState } from "react";
 export default function FormAddTodo() {
   const queryClient = useQueryClient();
 
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [fullname, setFullname] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
   const [statusWarning, setStatusWarning] = useState(false);
 
   const newItem: newpostt = {
-    firstname: firstname,
-    lastname: lastname,
+    fullname: fullname,
     phonenumber: phonenumber,
   };
   const postData = async () =>
@@ -36,11 +33,10 @@ export default function FormAddTodo() {
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if ((firstname && phonenumber && lastname).length > 0) {
+    if ((fullname && phonenumber).length > 0) {
       await mutateAsync();
       setPhoneNumber("");
-      setFirstname("");
-      setLastname("");
+      setFullname("");
     } else {
       setStatusWarning(true);
     }
@@ -52,20 +48,10 @@ export default function FormAddTodo() {
     >
       <input
         type="text"
-        name="firstname"
-        value={firstname}
-        onChange={(e) => (
-          setStatusWarning(false), setFirstname(e.target.value)
-        )}
-        placeholder="First Name :"
-        className="border-2 w-full px-3 py-2 rounded-md dark:bg-gray-800 dark:border-gray-300"
-      />
-      <input
-        type="text"
-        name="lastname"
-        value={lastname}
-        onChange={(e) => (setStatusWarning(false), setLastname(e.target.value))}
-        placeholder="Last Name :"
+        name="fullname"
+        value={fullname}
+        onChange={(e) => (setStatusWarning(false), setFullname(e.target.value))}
+        placeholder="Full Name :"
         className="border-2 w-full px-3 py-2 rounded-md dark:bg-gray-800 dark:border-gray-300"
       />
       <input

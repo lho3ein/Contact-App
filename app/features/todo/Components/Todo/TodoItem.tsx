@@ -25,9 +25,7 @@ export default function TodoItem() {
             >
               {item.id}
             </th>
-            <td className="md:px-6 px-4 py-3 md:py-4">
-              {item.firstname + " " + item.lastname}
-            </td>
+            <td className="md:px-6 px-4 py-3 md:py-4">{item.fullname}</td>
             <td className="md:px-6 pr-2 py-3 md:py-4 text-center">
               {item.phonenumber}
             </td>

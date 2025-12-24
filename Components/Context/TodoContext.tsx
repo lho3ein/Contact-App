@@ -3,12 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 import React, { createContext, useContext, useEffect } from "react";
 export type postt = {
   id: number;
-  firstname: string;
-  lastname: string;
+  fullname: string;
   phonenumber: string;
 };
 type cntxt = {
-  Todos: postt[] | undefined;
+  Todos: postt[];
   isLoading: boolean;
   isError: boolean;
 };
@@ -43,7 +42,7 @@ export function TodoContextWrapper({
   return (
     <TodoContext.Provider
       value={{
-        Todos: data,
+        Todos: data ?? [],
         isLoading: isLoading || isRefetching,
         isError,
       }}

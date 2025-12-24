@@ -19,16 +19,14 @@ import { useState } from "react";
 import { newpostt } from "./FormAddTodo";
 
 export default function EditButton({ item }: { item: postt }) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [fullname, setFullname] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [statusWarning, setStatusWarning] = useState(false);
   const [openStatus, setOpenStatus] = useState(false);
 
   const queryClient = useQueryClient();
   const newData: newpostt = {
-    firstname: firstName,
-    lastname: lastName,
+    fullname: fullname,
     phonenumber: phoneNumber,
   };
   const PutData = async (data: newpostt) => {
@@ -53,7 +51,7 @@ export default function EditButton({ item }: { item: postt }) {
     ),
   });
   const clickHandler = async () => {
-    if (((firstName || lastName) && phoneNumber).length > 0) {
+    if ((fullname && phoneNumber).length > 0) {
       await mutateAsync(newData);
     } else {
       setStatusWarning(true);
@@ -68,9 +66,7 @@ export default function EditButton({ item }: { item: postt }) {
             variant={"link"}
             className={cn("text-blue-500 hover:text-blue-700")}
             onClick={() => (
-              setFirstName(item.firstname),
-              setLastName(item.lastname),
-              setPhoneNumber(item.phonenumber)
+              setFullname(item.fullname), setPhoneNumber(item.phonenumber)
             )}
           >
             <SquarePen />
@@ -86,20 +82,9 @@ export default function EditButton({ item }: { item: postt }) {
               <Input
                 id="name-1"
                 name="name"
-                value={firstName}
+                value={fullname}
                 onChange={(e) => (
-                  setStatusWarning(false), setFirstName(e.target.value)
-                )}
-              />
-            </div>
-            <div className="grid gap-3">
-              <Label htmlFor="name-1">Last Name</Label>
-              <Input
-                id="name-1"
-                name="name"
-                value={lastName}
-                onChange={(e) => (
-                  setStatusWarning(false), setLastName(e.target.value)
+                  setStatusWarning(false), setFullname(e.target.value)
                 )}
               />
             </div>
