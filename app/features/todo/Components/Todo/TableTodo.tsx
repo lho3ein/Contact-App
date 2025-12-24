@@ -2,7 +2,7 @@ import TodoItem from "./TodoItem";
 
 export default function TableTodo() {
   return (
-    <table className="w-[70%] mx-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table className="w-full mx-auto mt-2 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
           <th scope="col" className="lg:px-6 px-4 py-3">

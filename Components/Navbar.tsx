@@ -6,7 +6,7 @@ export default function Navbar() {
     <nav className="flex py-3 justify-around dark:text-gray-100">
       <div className="flex space-x-5">
         <h1 className="md:text-lg font-bold">Contact App</h1>
-        <div className="flex items-center cursor-text w-52 lg:w-72 pl-2 lg:pl-0">
+        {/* <div className="flex items-center cursor-text w-52 lg:w-72 pl-2 lg:pl-0">
           <label htmlFor="sinput" className="cursor-text">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ export default function Navbar() {
             className="ml-1 font-medium text-sm text-slate-700 dark:text-gray-300 dark:bg-gray-800 w-full h-full focus:outline-none"
             placeholder="Search..."
           />
-        </div>
+        </div> */}
       </div>
       <ul className="flex">
         <li className="">

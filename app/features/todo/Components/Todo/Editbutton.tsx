@@ -31,7 +31,7 @@ export default function EditButton({ item }: { item: postt }) {
     lastname: lastName,
     phonenumber: phoneNumber,
   };
-  const PutData = async () => {
+  const PutData = async (data: newpostt) => {
     const res = await fetch(
       `https://6624413d04457d4aaf9bf32a.mockapi.io/Contact/${item.id}`,
       {
@@ -39,7 +39,7 @@ export default function EditButton({ item }: { item: postt }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newData),
+        body: JSON.stringify(data),
       }
     );
     if (res.ok) return res.json();
@@ -52,12 +52,9 @@ export default function EditButton({ item }: { item: postt }) {
       setOpenStatus(false)
     ),
   });
-  // e: FormEvent<HTMLFormElement>
   const clickHandler = async () => {
-    // e.preventDefault();
-    if ((firstName && lastName && phoneNumber).length > 0) {
-      await mutateAsync();
-      // setOpenStatus(false);
+    if (((firstName || lastName) && phoneNumber).length > 0) {
+      await mutateAsync(newData);
     } else {
       setStatusWarning(true);
     }
