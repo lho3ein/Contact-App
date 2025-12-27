@@ -1,11 +1,9 @@
 "use client";
-// import { columns } from "@/app/features/todo/Components/Todo/columns";
-// import DeleteBtn from "@/app/features/todo/Components/Todo/DeleteBtn";
-// import EditButton from "@/app/features/todo/Components/Todo/Editbutton";
+
 import FormAddTodo from "@/app/features/todo/Components/Todo/FormAddTodo";
 import { DataTableDemo } from "@/app/features/todo/Components/Todo/TableNew";
 import { useTodoContext } from "@/Components/Context/TodoContext";
-// import TableTodo from "@/app/features/todo/Components/Todo/TableTodo";
+
 export default function Todo() {
   const { Todos, isLoading } = useTodoContext();
   return (
